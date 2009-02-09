@@ -23,7 +23,6 @@ class PacManSiteChannel(PackageChannel):
         info = {}#{'uncomp': True}
         item = fetcher.enqueue(self._baseurl, **info)        
         fetcher.run(progress=progress, what=True)
-        
         if item.getStatus() == SUCCEEDED:
             localpath = item.getTargetPath()
             digest = getFileDigest(localpath)

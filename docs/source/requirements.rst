@@ -10,8 +10,11 @@ Scope
 Main Goal
 =========
 
-We want to develop a Windows package management system in order to ease the 
-deployment of Open Source applications on Win32 systems.
+We want to develop a Windows package management system in order to ease the deployment of 
+Open Source applications on Win32 systems.
+Package manager will be in charge of displaying informations about available packages to 
+the user. User will be able to perform some actions on the application he has chosen: 
+install/upgrade/remove.
 
 Description
 ===========
@@ -32,7 +35,7 @@ The functionality is divided into several parts:
 | **Repository**      | software available in the distribution. There is two levels of    |
 |                     | informations:                                                     |
 |                     |                                                                   |
-|                     | * Generic: A list of the name, version and description of         |
+|                     | * Generic: A list of the names, versions and descriptions of      |
 |                     |   the applications which will inform the user about which         |
 |                     |   application is available.                                       |
 |                     | * Specific: At a specific place, it is possible to find           |

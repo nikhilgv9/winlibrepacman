@@ -15,14 +15,14 @@ import smart
 from smart.const import NEVER, ALWAYS
 
 from smart.channels import pacman_site
-from smart.commands import search, install
+from smart.commands import search, install, update
 
 from client.service.const import DATADIR, PACMANDIR
 
 if os.name == 'posix':
     from user import home
-    baseurl = 'file://' + os.path.join(home, 'Workspace/winlibrepacman/','test.xml')
-#    baseurl = "http://127.0.0.1/~bertrand/test.xml"
+#    baseurl = 'file://' + os.path.join(home, 'Workspace/WinLibre/winlibrepacman/','test.xml')
+    baseurl = "http://127.0.0.1/~bertrand/test.xml"
 if os.name == 'nt':
     baseurl = "http://127.0.0.1/winlibrepacman/test.xml"
 
@@ -70,11 +70,12 @@ def main(argv=None):
         smart_ctrl = SmartCtrlr()
 #        smart_ctrl.reloadChannels(caching=NEVER)
         
-#        print smart_ctrl.getChannels()
-#        print smart_ctrl._cache._loaders
-#        print smart_ctrl._cache.getPackages()
+#        print 'Channels:', smart_ctrl.getChannels()
+#        print 'Loaders:', smart_ctrl._cache._loaders
+#        print 'Packages:', smart_ctrl._cache.getPackages()
         smart.sysconf.set("remove-packages", False)
-        print smart.sysconf
+#        opts = update.parse_options([])
+#        update.main(smart_ctrl, opts)
         opts = install.parse_options(['Package2'])
         install.main(smart_ctrl, opts)
     
