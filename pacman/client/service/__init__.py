@@ -22,9 +22,12 @@ from client.service.const import DATADIR, PACMANDIR
 if os.name == 'posix':
     from user import home
 #    baseurl = 'file://' + os.path.join(home, 'Workspace/WinLibre/winlibrepacman/','test.xml')
-    baseurl = "http://127.0.0.1/~bertrand/test.xml"
+    baseurl = "http://127.0.0.1/~bertrand/packages.xml"
 if os.name == 'nt':
-    baseurl = "http://127.0.0.1/winlibrepacman/test.xml"
+    baseurl = "http://127.0.0.1/winlibrepacman/packages.xml"
+path = os.path.join(os.path.dirname(__file__), '../../..', 'packages.xml')
+baseurl = 'file://%s' % path
+print baseurl
 
 
 class SmartCtrlr:
@@ -69,13 +72,10 @@ def main(argv=None):
 
         smart_ctrl = SmartCtrlr()
 #        smart_ctrl.reloadChannels(caching=NEVER)
-        
-#        print 'Channels:', smart_ctrl.getChannels()
-#        print 'Loaders:', smart_ctrl._cache._loaders
-#        print 'Packages:', smart_ctrl._cache.getPackages()
+
         smart.sysconf.set("remove-packages", False)
-#        opts = update.parse_options([])
-#        update.main(smart_ctrl, opts)
+        opts = update.parse_options([])
+        update.main(smart_ctrl, opts)
         opts = install.parse_options(['Package2'])
         install.main(smart_ctrl, opts)
     
