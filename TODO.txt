@@ -1,0 +1,7 @@
+Global tasks:
+ - Modify source code structure to be able to run unittest and doctest from nose module.
+
+
+Repository Server tasks:
+ - Write RESTful web application
+ -  

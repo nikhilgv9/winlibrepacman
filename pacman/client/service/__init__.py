@@ -11,13 +11,12 @@ import sys
 import getopt
 import os
 
-import smart
 from smart.const import NEVER, ALWAYS
 
 from smart.channels import pacman_site
 from smart.commands import search, install, update
 
-from client.service.const import DATADIR, PACMANDIR
+from pacman.client.service.const import DATADIR, PACMANDIR
 
 if os.name == 'posix':
     from user import home
