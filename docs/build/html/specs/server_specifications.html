@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Server Specifications &mdash; Package Manager v0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Package Manager v0.0.1 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Package Manager v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="server-specifications">
+<span id="server-specs"></span><h1>Server Specifications<a class="headerlink" href="#server-specifications" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Package Manager Server is a Django Application hosted on App Engine.</p>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<ul class="simple">
+<li>[<a class="reference external" href="http://en.wikipedia.org/wiki/Representational_State_Transfer">http://en.wikipedia.org/wiki/Representational_State_Transfer</a> RESTful] interface</li>
+<li>Formats supported : [<a class="reference external" href="http://www.json.org/">http://www.json.org/</a> JSON], [<a class="reference external" href="http://www.yaml.org/">http://www.yaml.org/</a> YAML], HTML</li>
+<li>GET Access : Everyone</li>
+<li>POST, UPDATE, DELETE : Need authentication</li>
+<li>Authentication : OpenID / Google Account</li>
+<li>Will serve Packages and MetaPackages descriptions</li>
+<li>Replication : synchronize with mirrors</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="data-model">
+<h2>Data Model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="package">
+<h3>Package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Name</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Name</td>
+<td>Char</td>
+</tr>
+<tr><td>Version</td>
+<td>Char</td>
+</tr>
+<tr><td>Date</td>
+<td>Date</td>
+</tr>
+<tr><td>Is Meta</td>
+<td>Boolean</td>
+</tr>
+<tr><td>Dependencies</td>
+<td>Table</td>
+</tr>
+<tr><td>Tag</td>
+<td>Table</td>
+</tr>
+<tr><td>Ratings</td>
+<td>Integer</td>
+</tr>
+<tr><td>Description</td>
+<td>Text</td>
+</tr>
+<tr><td>ScreenShots</td>
+<td>Images</td>
+</tr>
+<tr><td>Logo</td>
+<td>Image</td>
+</tr>
+<tr><td>Package file</td>
+<td>URL</td>
+</tr>
+<tr><td>Licence</td>
+<td>Char</td>
+</tr>
+<tr><td>Web</td>
+<td>URL</td>
+</tr>
+<tr><td>Sources</td>
+<td>URL</td>
+</tr>
+<tr><td>SHA1/MD5</td>
+<td>Text</td>
+</tr>
+<tr><td>Supported  OS</td>
+<td>Table</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="distribution-profile">
+<h3>Distribution/ Profile<a class="headerlink" href="#distribution-profile" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Name</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Name</td>
+<td>Char</td>
+</tr>
+<tr><td>Packages</td>
+<td>Table</td>
+</tr>
+<tr><td>Categories</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>MetaData</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Version</td>
+<td>Char</td>
+</tr>
+<tr><td>Date</td>
+<td>Date</td>
+</tr>
+<tr><td>Description</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="package-file-structure">
+<h2>Package File Structure<a class="headerlink" href="#package-file-structure" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Archive:</dt>
+<dd><ul class="first last simple">
+<li>Description File : Package Data Model in YAML</li>
+<li>Python Scripts : Install, Uninstall, Enumeration, Update</li>
+<li>Data-File Archive</li>
+</ul>
+</dd>
+</dl>
+<p>The packages won&#8217;t be hosted on the Package manager server but on each project&#8217;s server.</p>
+<div class="section" id="links">
+<h3>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul class="simple">
+<li>Django: <a class="reference external" href="http://www.djangoproject.com/">http://www.djangoproject.com/</a></li>
+<li>App Engine: <a class="reference external" href="http://code.google.com/appengine/">http://code.google.com/appengine/</a></li>
+<li>Melange : <a class="reference external" href="http://code.google.com/p/soc/">http://code.google.com/p/soc/</a></li>
+</ul>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Server Specifications</a><ul>
+<li><a class="reference external" href="#introduction">Introduction</a></li>
+<li><a class="reference external" href="#details">Details</a></li>
+<li><a class="reference external" href="#data-model">Data Model</a><ul>
+<li><a class="reference external" href="#package">Package</a></li>
+<li><a class="reference external" href="#distribution-profile">Distribution/ Profile</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#package-file-structure">Package File Structure</a><ul>
+<li><a class="reference external" href="#links">Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/specs/server_specifications.txt">Show Source</a></li>
+            </ul>
+          <h3>Quick search</h3>
+            <form class="search" action="../search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Package Manager v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, Bertrand Cachet, Pierre-Jean Coudert.
+      Last updated on Mar 13, 2009.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.1.
+    </div>
+  </body>
+</html>
