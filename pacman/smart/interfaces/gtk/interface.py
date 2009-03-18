@@ -19,13 +19,13 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.interfaces.gtk.progress import GtkProgress
-from smart.interfaces.gtk.changes import GtkChanges
-from smart.interfaces.gtk.log import GtkLog
-from smart.interface import Interface
-from smart.fetcher import Fetcher
-from smart.const import DEBUG
-from smart import *
+from pacman.smart.interfaces.gtk.progress import GtkProgress
+from pacman.smart.interfaces.gtk.changes import GtkChanges
+from pacman.smart.interfaces.gtk.log import GtkLog
+from pacman.smart.interface import Interface
+from pacman.smart.fetcher import Fetcher
+from pacman.smart.const import DEBUG
+from pacman.smart import *
 import gtk
 import sys
 

@@ -19,14 +19,14 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart import Error
+from pacman.smart import Error
 
 def create(ctrl, command=None, argv=None):
     if command:
-        from smart.interfaces.text.interface import TextInterface
+        from pacman.smart.interfaces.text.interface import TextInterface
         return TextInterface(ctrl)
     else:
-        from smart.interfaces.text.interactive import TextInteractiveInterface
+        from pacman.smart.interfaces.text.interactive import TextInteractiveInterface
         return TextInteractiveInterface(ctrl)
 
 # vim:ts=4:sw=4:et

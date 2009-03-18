@@ -20,9 +20,9 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.backends.deb.loader import DebDirLoader
-from smart.channel import PackageChannel
-from smart import *
+from pacman.smart.backends.deb.loader import DebDirLoader
+from pacman.smart.channel import PackageChannel
+from pacman.smart import *
 import os
 
 class DebDirChannel(PackageChannel):

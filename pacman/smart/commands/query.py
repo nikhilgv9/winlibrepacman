@@ -19,10 +19,10 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.util.strtools import isGlob
-from smart.option import OptionParser
-from smart.cache import Provides, PreRequires, Package
-from smart import *
+from pacman.smart.util.strtools import isGlob
+from pacman.smart.option import OptionParser
+from pacman.smart.cache import Provides, PreRequires, Package
+from pacman.smart import *
 import tempfile
 import fnmatch
 import string

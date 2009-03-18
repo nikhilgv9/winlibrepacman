@@ -19,9 +19,9 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.const import SUCCEEDED, FAILED, NEVER
-from smart.channel import MirrorsChannel
-from smart import *
+from pacman.smart.const import SUCCEEDED, FAILED, NEVER
+from pacman.smart.channel import MirrorsChannel
+from pacman.smart import *
 import posixpath
 
 class StandardMirrorsChannel(MirrorsChannel):

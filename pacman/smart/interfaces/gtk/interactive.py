@@ -19,21 +19,21 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.transaction import INSTALL, REMOVE, UPGRADE, REINSTALL, KEEP, FIX
-from smart.transaction import Transaction, ChangeSet, checkPackagesSimple
-from smart.transaction import PolicyInstall, PolicyRemove, PolicyUpgrade
-from smart.interfaces.gtk.channels import GtkChannels, GtkChannelSelector
-from smart.interfaces.gtk.mirrors import GtkMirrors
-from smart.interfaces.gtk.flags import GtkFlags
-from smart.interfaces.gtk.priorities import GtkPriorities, GtkSinglePriority
-from smart.interfaces.gtk.packageview import GtkPackageView
-from smart.interfaces.gtk.packageinfo import GtkPackageInfo
-from smart.interfaces.gtk.interface import GtkInterface
-from smart.interfaces.gtk import getPixbuf
-from smart.const import NEVER, VERSION
-from smart.searcher import Searcher
-from smart.cache import Package
-from smart import *
+from pacman.smart.transaction import INSTALL, REMOVE, UPGRADE, REINSTALL, KEEP, FIX
+from pacman.smart.transaction import Transaction, ChangeSet, checkPackagesSimple
+from pacman.smart.transaction import PolicyInstall, PolicyRemove, PolicyUpgrade
+from pacman.smart.interfaces.gtk.channels import GtkChannels, GtkChannelSelector
+from pacman.smart.interfaces.gtk.mirrors import GtkMirrors
+from pacman.smart.interfaces.gtk.flags import GtkFlags
+from pacman.smart.interfaces.gtk.priorities import GtkPriorities, GtkSinglePriority
+from pacman.smart.interfaces.gtk.packageview import GtkPackageView
+from pacman.smart.interfaces.gtk.packageinfo import GtkPackageInfo
+from pacman.smart.interfaces.gtk.interface import GtkInterface
+from pacman.smart.interfaces.gtk import getPixbuf
+from pacman.smart.const import NEVER, VERSION
+from pacman.smart.searcher import Searcher
+from pacman.smart.cache import Package
+from pacman.smart import *
 import shlex, re
 import fnmatch
 import gtk

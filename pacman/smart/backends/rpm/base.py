@@ -25,9 +25,9 @@
 import zlib
 
 from rpmver import checkdep, vercmp, splitarch, splitrelease
-from smart.util.strtools import isGlob
-from smart.cache import *
-from smart import *
+from pacman.smart.util.strtools import isGlob
+from pacman.smart.cache import *
+from pacman.smart import *
 import fnmatch
 import string
 import os, re
@@ -35,7 +35,7 @@ import os, re
 try:
     import rpm
 except ImportError:
-    from smart.const import DEBUG
+    from pacman.smart.const import DEBUG
     if sysconf.get("log-level") == DEBUG:
         import traceback
         traceback.print_exc()
@@ -84,7 +84,7 @@ def getTS(new=False):
         return getTS.ts
 
 # Here because pm requires getTS and rpm defined/imported above.
-from smart.backends.rpm.pm import RPMPackageManager
+from pacman.smart.backends.rpm.pm import RPMPackageManager
 
 class RPMPackage(Package):
 

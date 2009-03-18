@@ -13,6 +13,21 @@ so, to get WinLibre source code, you will need to install git version control sy
 download binaries for your OS from `here <http://git-scm.com/download>`_ and find information 
 on how to use git with github `here <http://github.com/guides/home>`_.
 
+
+Prepare Development Environment
+===============================
+
+First you will need to generate the virtual environnement which will contain all the python libraries 
+we need for our development.
+To do this, launch the following command from the project directory:
+  python bootstrap.py
+
+In our application, we download some file from the repository server. Actually this repository server 
+does not exist on the Web. At this time our "repository" is a local HTTP server. You will need to 
+specify the address of your local HTTP server in winlibre.py file.
+
+You can use EasyPHP to manage a HTTP server very easily on Windows.
+
 Structure of the project
 ========================
 
@@ -23,6 +38,8 @@ Here is the structure of the source code when you download it:
 +=============+====================+============================================================+
 |   file      | bootstrap.py       | Script that generates the virtual environnement used for   |
 |             |                    | our development.                                           |
+|   file      | winlibre.py        | Application launcher.                                      |
+|             |                    |                                                            |
 +-------------+--------------------+------------------------------------------------------------+
 |  directory  | docs/              | *source* directory contains all the documents that will be |
 |             |   docs/source      | used to generate the documentation.                        |

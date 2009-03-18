@@ -20,11 +20,11 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart import *
+from pacman.smart import *
 
 if sysconf.has("deb-dir"):
 
-    from smart.channels.deb_dir import DebDirChannel
+    from pacman.smart.channels.deb_dir import DebDirChannel
 
     def createDebDirChannel():
         channel = DebDirChannel(sysconf.get("deb-dir"), True,

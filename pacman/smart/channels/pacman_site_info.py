@@ -1,4 +1,4 @@
-from smart import _
+from pacman.smart import _
 
 kind = "package"
 

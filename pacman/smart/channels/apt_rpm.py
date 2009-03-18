@@ -19,11 +19,11 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.backends.rpm.header import RPMPackageListLoader
-from smart.util.filetools import getFileDigest
-from smart.channel import PackageChannel
-from smart.const import SUCCEEDED, FAILED, NEVER
-from smart import *
+from pacman.smart.backends.rpm.header import RPMPackageListLoader
+from pacman.smart.util.filetools import getFileDigest
+from pacman.smart.channel import PackageChannel
+from pacman.smart.const import SUCCEEDED, FAILED, NEVER
+from pacman.smart import *
 import posixpath
 import tempfile
 import commands

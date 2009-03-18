@@ -1,6 +1,6 @@
-from smart.const import INSTALL, REMOVE
-from smart.pm import PackageManager
-from smart import *
+from pacman.smart.const import INSTALL, REMOVE
+from pacman.smart.pm import PackageManager
+from pacman.smart import *
 import commands
 
 class PacManPackageManager(PackageManager):

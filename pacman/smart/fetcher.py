@@ -20,12 +20,12 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.util.strtools import sizeToStr, speedToStr, secondsToStr
-from smart.media import MediaSet, DeviceMedia
-from smart.uncompress import Uncompressor
-from smart.mirror import MirrorSystem
-from smart.const import *
-from smart import *
+from pacman.smart.util.strtools import sizeToStr, speedToStr, secondsToStr
+from pacman.smart.media import MediaSet, DeviceMedia
+from pacman.smart.uncompress import Uncompressor
+from pacman.smart.mirror import MirrorSystem
+from pacman.smart.const import *
+from pacman.smart import *
 import tempfile
 import socket
 import urllib
@@ -1302,7 +1302,7 @@ class URLLIB2Handler(FetcherHandler):
     def __init__(self, *args):
         FetcherHandler.__init__(self, *args)
         if not URLLIB2Handler._openerinstalled:
-            from smart.util import urllib2
+            from pacman.smart.util import urllib2
             URLLIB2Handler._openerinstalled = True
             handlerlist = []
             if self.USECACHEDFTP:
@@ -1743,7 +1743,7 @@ class SCPHandler(FetcherHandler):
         return bool(self._queue or self._active)
 
     def fetch(self, item):
-        from smart.util.ssh import SSH
+        from pacman.smart.util.ssh import SSH
 
         fetcher = self._fetcher
         prog = iface.getSubProgress(self._fetcher)

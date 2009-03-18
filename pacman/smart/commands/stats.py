@@ -19,9 +19,9 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.util.strtools import sizeToStr
-from smart.option import OptionParser
-from smart import *
+from pacman.smart.util.strtools import sizeToStr
+from pacman.smart.option import OptionParser
+from pacman.smart import *
 import re
 
 USAGE=_("smart stats")

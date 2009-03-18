@@ -19,10 +19,10 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.backends.slack.pm import SlackPackageManager
+from pacman.smart.backends.slack.pm import SlackPackageManager
 from slackver import checkdep, vercmp, splitrelease
-from smart.util.strtools import isGlob
-from smart.cache import *
+from pacman.smart.util.strtools import isGlob
+from pacman.smart.cache import *
 import fnmatch
 import string
 import os, re

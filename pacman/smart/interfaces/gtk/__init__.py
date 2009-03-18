@@ -20,8 +20,8 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.interface import getImagePath
-from smart import *
+from pacman.smart.interface import getImagePath
+from pacman.smart import *
 import os
 
 try:
@@ -29,7 +29,7 @@ try:
     pygtk.require("2.0")
     import gtk
 except ImportError:
-    from smart.const import DEBUG
+    from pacman.smart.const import DEBUG
     if sysconf.get("log-level") == DEBUG:
         import traceback
         traceback.print_exc()
@@ -37,10 +37,10 @@ except ImportError:
 
 def create(ctrl, command=None, argv=None):
     if command:
-        from smart.interfaces.gtk.command import GtkCommandInterface
+        from pacman.smart.interfaces.gtk.command import GtkCommandInterface
         return GtkCommandInterface(ctrl)
     else:
-        from smart.interfaces.gtk.interactive import GtkInteractiveInterface
+        from pacman.smart.interfaces.gtk.interactive import GtkInteractiveInterface
         return GtkInteractiveInterface(ctrl)
     
 _pixbuf = {}

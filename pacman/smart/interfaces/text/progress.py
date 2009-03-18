@@ -20,9 +20,9 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.interface import getScreenWidth
-from smart.util.strtools import ShortURL
-from smart.progress import Progress
+from pacman.smart.interface import getScreenWidth
+from pacman.smart.util.strtools import ShortURL
+from pacman.smart.progress import Progress
 import posixpath
 import time
 import sys

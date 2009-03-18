@@ -20,7 +20,7 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart import *
+from pacman.smart import *
 import os
 
 class Channel(object):
@@ -158,11 +158,12 @@ def createChannel(alias, data):
     data = parseChannelData(data)
     type = data.get("type", "").replace('-', '_').lower()
     try:
-        smart = __import__("smart.channels."+type)
+        pacman = __import__("pacman.smart.channels."+type)
+        smart = getattr(pacman, 'smart')
         channels = getattr(smart, "channels")
         channel = getattr(channels, type)
     except (ImportError, AttributeError), e:
-        from smart.const import DEBUG
+        from pacman.smart.const import DEBUG
         if sysconf.get("log-level") == DEBUG:
             import traceback
             traceback.print_exc()
@@ -274,11 +275,12 @@ def parseChannelsDescription(data):
 def getChannelInfo(type):
     try:
         infoname = type.replace('-', '_').lower()+"_info"
-        smart = __import__("smart.channels."+infoname)
+        pacman = __import__("pacman.smart.channels."+infoname)
+        smart = getattr(pacman, 'smart')
         channels = getattr(smart, "channels")
         info = getattr(channels, infoname)
     except (ImportError, AttributeError):
-        from smart.const import DEBUG
+        from pacman.smart.const import DEBUG
         if sysconf.get("log-level") == DEBUG:
             import traceback
             traceback.print_exc()
@@ -294,7 +296,7 @@ def getChannelInfo(type):
     return info
 
 def getAllChannelInfos():
-    from smart import channels
+    from pacman.smart import channels
     filenames = os.listdir(os.path.dirname(channels.__file__))
     infos = {}
     for filename in filenames:
@@ -304,7 +306,7 @@ def getAllChannelInfos():
     return infos
 
 def detectLocalChannels(path):
-    from smart.media import MediaSet
+    from pacman.smart.media import MediaSet
     mediaset = MediaSet()
     infos = getAllChannelInfos()
     channels = []

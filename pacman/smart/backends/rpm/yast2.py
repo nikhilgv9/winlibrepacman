@@ -19,10 +19,10 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.backends.rpm.rpmver import splitarch
-from smart.cache import PackageInfo, Loader
-from smart.backends.rpm.base import *
-from smart import *
+from pacman.smart.backends.rpm.rpmver import splitarch
+from pacman.smart.cache import PackageInfo, Loader
+from pacman.smart.backends.rpm.base import *
+from pacman.smart import *
 import posixpath
 import locale
 import os

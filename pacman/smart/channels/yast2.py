@@ -21,11 +21,11 @@
 #
 import posixpath
 
-from smart.backends.rpm.yast2 import YaST2Loader
-from smart.util.filetools import getFileDigest
-from smart.const import FAILED, NEVER
-from smart.channel import PackageChannel
-from smart import Error, _
+from pacman.smart.backends.rpm.yast2 import YaST2Loader
+from pacman.smart.util.filetools import getFileDigest
+from pacman.smart.const import FAILED, NEVER
+from pacman.smart.channel import PackageChannel
+from pacman.smart import Error, _
 
 
 class YaST2Channel(PackageChannel):

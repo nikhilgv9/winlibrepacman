@@ -28,8 +28,8 @@ import sys
 if sys.version_info < (2, 4):
     from sets import Set as set
 
-from smart.channel import *
-from smart import *
+from pacman.smart.channel import *
+from pacman.smart import *
 
 
 APT_SOURCES_DIR = "/etc/apt/sources.list.d/"

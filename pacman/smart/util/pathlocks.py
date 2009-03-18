@@ -41,7 +41,6 @@ if subprocess.mswindows:
     def fopen(path, flags=os.O_RDONLY):
 #        if os.path.isdir(path):
 #            return open(os.path.join(path, 'lock'), 'w')
-
         return os.open(path, flags)
         
 else:
@@ -86,32 +85,33 @@ class PathLocks(object):
             pass
 
     def unlockAll(self):
-        for path in self._lock:
-            fd = self._lock[path]
-            funlock(fd)
-            os.close(fd)
-        self._lock.clear()
+        # for path in self._lock:
+        #     fd = self._lock[path]
+        #     funlock(fd)
+        #     os.close(fd)
+        # self._lock.clear()
+        pass
 
     def unlock(self, path):
         result = self._force
-        fd = self._lock.get(path)
-        if fd is not None:
-            funlock(fd)
-            os.close(fd)
-            del self._lock[path]
-            result = True
+        # fd = self._lock.get(path)
+        # if fd is not None:
+        #     funlock(fd)
+        #     os.close(fd)
+        #     del self._lock[path]
+        #     result = True
         return result
         
     
     def lock(self, path, exclusive=False, block=False):
         result = self._force
-        fd = self._lock.get(path)
-        if fd is None:
-            fd = self._lock[path] = fopen(path, os.O_RDONLY)
-        try:
-            flock(fd, block, exclusive)
-            result = True
-        except IOError, e:
-            pass
+        # fd = self._lock.get(path)
+        # if fd is None:
+        #     fd = self._lock[path] = fopen(path, os.O_RDONLY)
+        # try:
+        #     flock(fd, block, exclusive)
+        #     result = True
+        # except IOError, e:
+        #     pass
         return result
         

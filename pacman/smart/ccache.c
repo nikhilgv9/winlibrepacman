@@ -175,7 +175,7 @@ getGlobDistance(void)
 {
     static PyObject *globdistance = NULL;
     if (globdistance == NULL) {
-        PyObject *module = PyImport_ImportModule("smart.util.strtools");
+        PyObject *module = PyImport_ImportModule("pacman.smart.util.strtools");
         if (module) {
             globdistance = PyObject_GetAttrString(module, "globdistance");
             Py_DECREF(module);
@@ -699,7 +699,7 @@ static PyMemberDef Package_members[] = {
 statichere PyTypeObject Package_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.cache.Package",	/*tp_name*/
+	"pacman.smart.cache.Package",	/*tp_name*/
 	sizeof(PackageObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	(destructor)Package_dealloc, /*tp_dealloc*/
@@ -969,7 +969,7 @@ static PyMemberDef Provides_members[] = {
 statichere PyTypeObject Provides_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.cache.Provides",	/*tp_name*/
+	"pacman.smart.cache.Provides",	/*tp_name*/
 	sizeof(ProvidesObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	(destructor)Provides_dealloc, /*tp_dealloc*/
@@ -1172,7 +1172,7 @@ static PyMemberDef Depends_members[] = {
 statichere PyTypeObject Depends_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.cache.Depends",	/*tp_name*/
+	"pacman.smart.cache.Depends",	/*tp_name*/
 	sizeof(DependsObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	(destructor)Depends_dealloc, /*tp_dealloc*/
@@ -1216,7 +1216,7 @@ statichere PyTypeObject Depends_Type = {
 statichere PyTypeObject PreRequires_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.cache.PreRequires",	/*tp_name*/
+	"pacman.smart.cache.PreRequires",	/*tp_name*/
 	sizeof(DependsObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	0,          /*tp_dealloc*/
@@ -1260,7 +1260,7 @@ statichere PyTypeObject PreRequires_Type = {
 statichere PyTypeObject Requires_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.cache.Requires",	/*tp_name*/
+	"pacman.smart.cache.Requires",	/*tp_name*/
 	sizeof(DependsObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	0,          /*tp_dealloc*/
@@ -1304,7 +1304,7 @@ statichere PyTypeObject Requires_Type = {
 statichere PyTypeObject Upgrades_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.cache.Upgrades",	/*tp_name*/
+	"pacman.smart.cache.Upgrades",	/*tp_name*/
 	sizeof(DependsObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	0,          /*tp_dealloc*/
@@ -1348,7 +1348,7 @@ statichere PyTypeObject Upgrades_Type = {
 statichere PyTypeObject Conflicts_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.cache.Conflicts",	/*tp_name*/
+	"pacman.smart.cache.Conflicts",	/*tp_name*/
 	sizeof(DependsObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	0,          /*tp_dealloc*/
@@ -2341,7 +2341,7 @@ static PyMemberDef Loader_members[] = {
 statichere PyTypeObject Loader_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.cache.Loader",	/*tp_name*/
+	"pacman.smart.cache.Loader",	/*tp_name*/
 	sizeof(LoaderObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	(destructor)Loader_dealloc, /*tp_dealloc*/
@@ -3586,7 +3586,7 @@ static PyMemberDef Cache_members[] = {
 statichere PyTypeObject Cache_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.cache.Cache",	/*tp_name*/
+	"pacman.smart.cache.Cache",	/*tp_name*/
 	sizeof(CacheObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	(destructor)Cache_dealloc, /*tp_dealloc*/

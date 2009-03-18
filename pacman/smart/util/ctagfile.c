@@ -359,7 +359,7 @@ static PyMethodDef TagFile_methods[] = {
 statichere PyTypeObject TagFile_Type = {
 	PyObject_HEAD_INIT(NULL)
 	0,			/*ob_size*/
-	"smart.util.tagfile.TagFile",	/*tp_name*/
+	"pacman.smart.util.tagfile.TagFile",	/*tp_name*/
 	sizeof(TagFileObject), /*tp_basicsize*/
 	0,			/*tp_itemsize*/
 	(destructor)TagFile_dealloc, /*tp_dealloc*/

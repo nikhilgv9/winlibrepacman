@@ -19,11 +19,11 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.backends.rpm.redcarpet import RPMRedCarpetLoader
-from smart.util.filetools import getFileDigest
-from smart.const import SUCCEEDED, FAILED, NEVER
-from smart.channel import PackageChannel
-from smart import *
+from pacman.smart.backends.rpm.redcarpet import RPMRedCarpetLoader
+from pacman.smart.util.filetools import getFileDigest
+from pacman.smart.const import SUCCEEDED, FAILED, NEVER
+from pacman.smart.channel import PackageChannel
+from pacman.smart import *
 import posixpath
 
 class RedCarpetChannel(PackageChannel):

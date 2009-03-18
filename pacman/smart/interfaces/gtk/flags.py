@@ -19,8 +19,8 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.interfaces.gtk import getPixbuf
-from smart import *
+from pacman.smart.interfaces.gtk import getPixbuf
+from pacman.smart import *
 import gobject, gtk
 import re
 

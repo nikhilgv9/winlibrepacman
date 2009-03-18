@@ -20,13 +20,13 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.backends.rpm.rpmver import splitarch
-from smart.util.strtools import globdistance
-from smart.cache import Loader, PackageInfo
-from smart.channel import FileChannel
-from smart.backends.rpm.base import *
-from smart.progress import Progress
-from smart import *
+from pacman.smart.backends.rpm.rpmver import splitarch
+from pacman.smart.util.strtools import globdistance
+from pacman.smart.cache import Loader, PackageInfo
+from pacman.smart.channel import FileChannel
+from pacman.smart.backends.rpm.base import *
+from pacman.smart.progress import Progress
+from pacman.smart import *
 import locale
 import stat
 import os

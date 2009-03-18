@@ -19,7 +19,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="Package Manager v0.0.1 documentation" href="index.html" /> 
+    <link rel="top" title="Package Manager v0.0.1 documentation" href="index.html" />
+    <link rel="prev" title="Global Specifications" href="specs/specifications.html" /> 
   </head>
   <body>
     <div class="related">
@@ -28,6 +29,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="specs/specifications.html" title="Global Specifications"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Package Manager v0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -48,6 +52,18 @@ so, to get WinLibre source code, you will need to install git version control sy
 download binaries for your OS from <a class="reference external" href="http://git-scm.com/download">here</a> and find information
 on how to use git with github <a class="reference external" href="http://github.com/guides/home">here</a>.</p>
 </div>
+<div class="section" id="prepare-development-environment">
+<h3>Prepare Development Environment<a class="headerlink" href="#prepare-development-environment" title="Permalink to this headline">¶</a></h3>
+<p>First you will need to generate the virtual environnement which will contain all the python libraries
+we need for our development.
+To do this, launch the following command from the project directory:</p>
+<blockquote>
+python bootstrap.py</blockquote>
+<p>In our application, we download some file from the repository server. Actually this repository server
+does not exist on the Web. At this time our &#8220;repository&#8221; is a local HTTP server. You will need to
+specify the address of your local HTTP server in winlibre.py file.</p>
+<p>You can use EasyPHP to manage a HTTP server very easily on Windows.</p>
+</div>
 <div class="section" id="structure-of-the-project">
 <h3>Structure of the project<a class="headerlink" href="#structure-of-the-project" title="Permalink to this headline">¶</a></h3>
 <p>Here is the structure of the source code when you download it:</p>
@@ -64,10 +80,15 @@ on how to use git with github <a class="reference external" href="http://github.
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>file</td>
-<td>bootstrap.py</td>
+<tr><td><p class="first">file</p>
+<p class="last">file</p>
+</td>
+<td><p class="first">bootstrap.py</p>
+<p class="last">winlibre.py</p>
+</td>
 <td>Script that generates the virtual environnement used for
-our development.</td>
+our development.
+Application launcher.</td>
 </tr>
 <tr><td>directory</td>
 <td><dl class="first last docutils">
@@ -177,6 +198,7 @@ solution.</p>
 <li><a class="reference external" href="">Tutorial to start working on the WinLibre Package Manager project</a><ul>
 <li><a class="reference external" href="#development-environment">Development Environment</a><ul>
 <li><a class="reference external" href="#source-code">Source Code</a></li>
+<li><a class="reference external" href="#prepare-development-environment">Prepare Development Environment</a></li>
 <li><a class="reference external" href="#structure-of-the-project">Structure of the project</a></li>
 <li><a class="reference external" href="#paver-scripting-tool">Paver scripting tool</a></li>
 </ul>
@@ -189,6 +211,8 @@ solution.</p>
 </li>
 </ul>
 
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="specs/specifications.html" title="previous chapter">Global Specifications</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/beginner_guide.txt">Show Source</a></li>
@@ -209,12 +233,15 @@ solution.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="specs/specifications.html" title="Global Specifications"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Package Manager v0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Bertrand Cachet, Pierre-Jean Coudert.
-      Last updated on Mar 15, 2009.
+      Last updated on Mar 18, 2009.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.1.
     </div>
   </body>

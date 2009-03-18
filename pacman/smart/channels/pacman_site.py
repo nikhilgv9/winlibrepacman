@@ -1,7 +1,7 @@
-from smart.channel import PackageChannel
-from smart.backends.pacman.loader import PacManXMLLoader
-from smart.const import SUCCEEDED, FAILED, NEVER
-from smart.util.filetools import getFileDigest
+from pacman.smart.channel import PackageChannel
+from pacman.smart.backends.pacman.loader import PacManXMLLoader
+from pacman.smart.const import SUCCEEDED, FAILED, NEVER
+from pacman.smart.util.filetools import getFileDigest
 
 class PacManSiteChannel(PackageChannel):
     """

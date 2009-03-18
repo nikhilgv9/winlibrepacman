@@ -20,8 +20,8 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.util.filetools import compareFiles
-from smart import *
+from pacman.smart.util.filetools import compareFiles
+from pacman.smart import *
 import commands
 import stat
 import os

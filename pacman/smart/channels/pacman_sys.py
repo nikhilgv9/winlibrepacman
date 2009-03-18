@@ -1,6 +1,6 @@
-from smart.backends.pacman.loader import PacManDBLoader
-from smart.channel import PackageChannel
-from smart import *
+from pacman.smart.backends.pacman.loader import PacManDBLoader
+from pacman.smart.channel import PackageChannel
+from pacman.smart import *
 import os
 
 class PacManSysChannel(PackageChannel):

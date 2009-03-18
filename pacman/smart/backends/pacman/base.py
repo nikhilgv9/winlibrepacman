@@ -1,6 +1,6 @@
 from pm import PacManPackageManager
 from pacmanver import checkdep, vercmp, vercmpparts, splitrelease
-from smart.cache import Package, globdistance, Provides, Depends, Upgrades
+from pacman.smart.cache import Package, globdistance, Provides, Depends, Upgrades
 
 __all__ = ["PacManPackage", "PacManProvides", "PacManUpgrades"]
 

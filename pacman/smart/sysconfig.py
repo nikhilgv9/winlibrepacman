@@ -20,7 +20,7 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 import cPickle as pickle
-from smart import *
+from pacman.smart import *
 import sys, os
 import copy
 import re

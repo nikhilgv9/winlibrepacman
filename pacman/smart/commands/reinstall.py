@@ -19,11 +19,11 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.transaction import Transaction, PolicyInstall, sortUpgrades
-from smart.transaction import INSTALL, REINSTALL
-from smart.option import OptionParser
-from smart.cache import Package
-from smart import *
+from pacman.smart.transaction import Transaction, PolicyInstall, sortUpgrades
+from pacman.smart.transaction import INSTALL, REINSTALL
+from pacman.smart.option import OptionParser
+from pacman.smart.cache import Package
+from pacman.smart import *
 import string
 import re
 

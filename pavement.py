@@ -12,9 +12,9 @@ options(
 	    author='Bertrand Cachet',
 	    author_email='bertrand.cachet@gmail.com',
 	    url='http://code.google.com/p/winlibre',
-	    packages=['pacman', 'smart'],
+	    packages=['pacman'],
 	    install_requires=[],
-	    test_suite='nose.collector',
+	    test_suite='tests.suite',
 	    zip_safe=False,
     ),
 
@@ -31,6 +31,17 @@ options(
     ),
 
 )
+
+# @task
+# def test():
+#     import sys
+#     sys.path.append(os.path.abspath(os.path.dirname('./')))
+#     print sys.path
+#     from subprocess import call
+#     command = ['./bin/nosetests', '-P', '--with-doctest', '-e', 'interfaces' ,'-w', 'tests']
+#     #for package in options.packages:
+#     # command.append(package)
+#     call(command)
 
 if paver.virtual.has_virtualenv:
     @task
@@ -52,10 +63,14 @@ def rm_files(arg, dirname, names):
 
 @task
 def clean():
-    path("build").rmtree()
-    cleaner = Cleaner('./pacman/', ['pyc', '~'])
-    if cleaner.is_permitted('delete'):
-        cleaner.execute('file/folder removal')
+	path("build").rmtree()
+	cleaner = Cleaner('./smart/', ['pyc', '~'])
+	if cleaner.is_permitted('delete'):
+		cleaner.execute('file/folder removal')
+	cleaner = Cleaner('./pacman/', ['pyc', '~'])
+	if cleaner.is_permitted('delete'):
+		cleaner.execute('file/folder removal')
+
 #    import os
 #    for package in options.setup.packages:
 #        dir = package.replace('.', os.path.sep)

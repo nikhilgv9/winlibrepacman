@@ -1,6 +1,6 @@
 import os
 
-from smart.cache import Loader, PackageInfo
+from pacman.smart.cache import Loader, PackageInfo
 from base import PacManPackage, PacManProvides, PacManUpgrades
 from elementtree import ElementTree
 

@@ -19,10 +19,10 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.interfaces.images import __file__ as _images__file__
-from smart.progress import Progress
-from smart.const import *
-from smart import *
+from pacman.smart.interfaces.images import __file__ as _images__file__
+from pacman.smart.progress import Progress
+from pacman.smart.const import *
+from pacman.smart import *
 import sys, os
 #BCa import termios
 import struct
@@ -41,7 +41,8 @@ class Interface(object):
         result = None
         if command:
             try:
-                smart = __import__("smart.commands."+command)
+                pacman = __import__("pacman.smart.commands."+command)
+                smart = getattr(pacman, 'smart')
                 commands = getattr(smart, "commands")
                 _command = getattr(commands, command)
             except (ImportError, AttributeError):
@@ -154,7 +155,8 @@ def getScreenWidth():
 def createInterface(name, ctrl, command=None, argv=None):
     try:
         xname = name.replace('-', '_').lower()
-        smart = __import__("smart.interfaces."+xname)
+        pacman = __import__("pacman.smart.interfaces."+xname)
+        smart = getattr(pacman, 'smart')
         interfaces = getattr(smart, "interfaces")
         interface = getattr(interfaces, xname)
     except (ImportError, AttributeError):

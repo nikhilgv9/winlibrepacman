@@ -12,6 +12,7 @@ Contents:
 
    requirements
    specs/specifications
+   beginner_guide
 
 Indices and tables
 ==================

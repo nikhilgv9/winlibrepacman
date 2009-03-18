@@ -19,9 +19,9 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.interfaces.gtk import getPixbuf
-from smart.channel import getChannelInfo
-from smart import *
+from pacman.smart.interfaces.gtk import getPixbuf
+from pacman.smart.channel import getChannelInfo
+from pacman.smart import *
 import gobject, gtk
 
 class GtkPriorities(object):

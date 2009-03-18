@@ -26,10 +26,10 @@ import signal
 import errno
 import shlex
 
-from smart.const import Enum, INSTALL, REMOVE, OPTIONAL, ENFORCE
-from smart.pm import PackageManager
-from smart.sorter import *
-from smart import *
+from pacman.smart.const import Enum, INSTALL, REMOVE, OPTIONAL, ENFORCE
+from pacman.smart.pm import PackageManager
+from pacman.smart.sorter import *
+from pacman.smart import *
 
 
 # Part of the logic in this file was based on information found in APT.

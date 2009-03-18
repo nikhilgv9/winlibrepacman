@@ -19,8 +19,8 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.commands import query
-from smart import *
+from pacman.smart.commands import query
+from pacman.smart import *
 
 HELP=_("""
 Usage: smart search expression ...

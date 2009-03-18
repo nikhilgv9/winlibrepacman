@@ -19,11 +19,11 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.interfaces.gtk.packageview import GtkPackageView
-from smart.interfaces.gtk import getPixbuf
-from smart.util.strtools import sizeToStr
-from smart.report import Report
-from smart import *
+from pacman.smart.interfaces.gtk.packageview import GtkPackageView
+from pacman.smart.interfaces.gtk import getPixbuf
+from pacman.smart.util.strtools import sizeToStr
+from pacman.smart.report import Report
+from pacman.smart import *
 import gobject, gtk
 
 class GtkChanges(gtk.Window):

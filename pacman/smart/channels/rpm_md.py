@@ -19,8 +19,8 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.backends.rpm.metadata import RPMMetaDataLoader
-from smart.util.filetools import getFileDigest
+from pacman.smart.backends.rpm.metadata import RPMMetaDataLoader
+from pacman.smart.util.filetools import getFileDigest
 
 try:
     from xml.etree import ElementTree
@@ -28,11 +28,11 @@ except ImportError:
     try:
         from elementtree import ElementTree
     except ImportError:
-        from smart.util.elementtree import ElementTree
+        from pacman.smart.util.elementtree import ElementTree
 
-from smart.const import SUCCEEDED, FAILED, NEVER, ALWAYS
-from smart.channel import PackageChannel
-from smart import *
+from pacman.smart.const import SUCCEEDED, FAILED, NEVER, ALWAYS
+from pacman.smart.channel import PackageChannel
+from pacman.smart import *
 import posixpath
 
 from xml.parsers import expat

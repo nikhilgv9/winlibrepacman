@@ -19,9 +19,9 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.cache import Loader, PackageInfo
-from smart.backends.slack.base import *
-from smart import *
+from pacman.smart.cache import Loader, PackageInfo
+from pacman.smart.backends.slack.base import *
+from pacman.smart import *
 import os
 import re
 

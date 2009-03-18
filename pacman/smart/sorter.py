@@ -19,9 +19,9 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.const import ENFORCE, OPTIONAL, INSTALL, REMOVE, RECURSIONLIMIT
-from smart.cache import PreRequires
-from smart import *
+from pacman.smart.const import ENFORCE, OPTIONAL, INSTALL, REMOVE, RECURSIONLIMIT
+from pacman.smart.cache import PreRequires
+from pacman.smart import *
 import os, sys
 
 MAXSORTERDEPTH = RECURSIONLIMIT-50

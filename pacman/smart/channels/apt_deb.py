@@ -22,12 +22,12 @@
 import posixpath
 import commands
 
-from smart.backends.deb.loader import DebTagFileLoader
-from smart.util.filetools import getFileDigest
-from smart.backends.deb.base import getArchitecture
-from smart.channel import PackageChannel
-from smart.const import SUCCEEDED, NEVER
-from smart import *
+from pacman.smart.backends.deb.loader import DebTagFileLoader
+from pacman.smart.util.filetools import getFileDigest
+from pacman.smart.backends.deb.base import getArchitecture
+from pacman.smart.channel import PackageChannel
+from pacman.smart.const import SUCCEEDED, NEVER
+from pacman.smart import *
 
 
 class APTDEBChannel(PackageChannel):

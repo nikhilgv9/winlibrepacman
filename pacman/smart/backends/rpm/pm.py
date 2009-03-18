@@ -20,12 +20,12 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.backends.rpm.rpmver import splitarch
-from smart.util.filetools import setCloseOnExec
-from smart.sorter import ChangeSetSorter, LoopError
-from smart.const import INSTALL, REMOVE, BLOCKSIZE
-from smart.pm import PackageManager
-from smart import *
+from pacman.smart.backends.rpm.rpmver import splitarch
+from pacman.smart.util.filetools import setCloseOnExec
+from pacman.smart.sorter import ChangeSetSorter, LoopError
+from pacman.smart.const import INSTALL, REMOVE, BLOCKSIZE
+from pacman.smart.pm import PackageManager
+from pacman.smart import *
 import tempfile
 import sys, os
 import codecs
@@ -352,6 +352,6 @@ class RPMCallback:
                 self.prog.setSubDone(subkey)
             self.prog.show()
 
-from smart.backends.rpm.base import rpm, getTS
+from pacman.smart.backends.rpm.base import rpm, getTS
 
 # vim:ts=4:sw=4:et

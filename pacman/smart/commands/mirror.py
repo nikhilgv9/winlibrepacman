@@ -19,10 +19,10 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.option import OptionParser, append_all
-from smart.util.filetools import getFileDigest
-from smart.channel import *
-from smart import *
+from pacman.smart.option import OptionParser, append_all
+from pacman.smart.util.filetools import getFileDigest
+from pacman.smart.channel import *
+from pacman.smart import *
 import textwrap
 import tempfile
 import sys, os

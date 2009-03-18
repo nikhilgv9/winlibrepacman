@@ -19,13 +19,13 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.interfaces.text.progress import TextProgress
-from smart.interface import Interface, getScreenWidth
-from smart.util.strtools import sizeToStr, printColumns
-from smart.const import OPTIONAL, ALWAYS
-from smart.fetcher import Fetcher
-from smart.report import Report
-from smart import *
+from pacman.smart.interfaces.text.progress import TextProgress
+from pacman.smart.interface import Interface, getScreenWidth
+from pacman.smart.util.strtools import sizeToStr, printColumns
+from pacman.smart.const import OPTIONAL, ALWAYS
+from pacman.smart.fetcher import Fetcher
+from pacman.smart.report import Report
+from pacman.smart import *
 import getpass
 import sys
 import os

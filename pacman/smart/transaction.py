@@ -19,9 +19,9 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.const import INSTALL, REMOVE, UPGRADE, FIX, REINSTALL, KEEP
-from smart.cache import PreRequires, Package
-from smart import *
+from pacman.smart.const import INSTALL, REMOVE, UPGRADE, FIX, REINSTALL, KEEP
+from pacman.smart.cache import PreRequires, Package
+from pacman.smart import *
 from math import atan, pi
 from heapq import heappush, heappop
 

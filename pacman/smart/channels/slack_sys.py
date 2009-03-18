@@ -19,9 +19,9 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.backends.slack.loader import SlackDBLoader
-from smart.channel import PackageChannel
-from smart import *
+from pacman.smart.backends.slack.loader import SlackDBLoader
+from pacman.smart.channel import PackageChannel
+from pacman.smart import *
 import os
 
 class SlackSysChannel(PackageChannel):

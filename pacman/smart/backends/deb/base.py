@@ -26,10 +26,10 @@ import sys
 import os
 import re
 
-from smart.backends.deb.debver import vercmp, checkdep, splitrelease
-from smart.backends.deb.pm import DebPackageManager
-from smart.util.strtools import isGlob
-from smart.cache import *
+from pacman.smart.backends.deb.debver import vercmp, checkdep, splitrelease
+from pacman.smart.backends.deb.pm import DebPackageManager
+from pacman.smart.util.strtools import isGlob
+from pacman.smart.cache import *
 
 __all__ = ["DebPackage", "DebProvides", "DebNameProvides", "DebPreRequires",
            "DebRequires", "DebUpgrades", "DebConflicts", "DebBreaks",

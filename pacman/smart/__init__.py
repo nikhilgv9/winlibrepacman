@@ -26,7 +26,8 @@ import locale
 import sys
 import os
 
-from smart.hook import Hooks
+
+from pacman.smart.hook import Hooks
 
 
 __all__ = ["sysconf", "pkgconf", "iface", "hooks", "Error", "_"]
@@ -96,13 +97,13 @@ def init(command=None, argv=None,
          datadir=None, configfile=None,
          gui=False, shell=False, interface=None,
          forcelocks=False, loglevel=None):
-    from smart.const import DEBUG, INFO, WARNING, ERROR
-    from smart.const import DATADIR, USERDATADIR
-    from smart.interface import Interface, createInterface
-    from smart.sysconfig import SysConfig
-    from smart.pkgconfig import PkgConfig
-    from smart.interface import Interface
-    from smart.control import Control
+    from pacman.smart.const import DEBUG, INFO, WARNING, ERROR
+    from pacman.smart.const import DATADIR, USERDATADIR
+    from pacman.smart.interface import Interface, createInterface
+    from pacman.smart.sysconfig import SysConfig
+    from pacman.smart.pkgconfig import PkgConfig
+    from pacman.smart.interface import Interface
+    from pacman.smart.control import Control
 
     _smart_run_lock.acquire()
 
@@ -167,7 +168,7 @@ def initialized():
 
 def initDistro(ctrl):
     # Run distribution script, if available.
-    from smart.const import DISTROFILE
+    from pacman.smart.const import DISTROFILE
     distrofile = sysconf.get("distro-init-file", DISTROFILE)
     if distrofile and os.path.isfile(distrofile):
         execfile(distrofile, {"ctrl": ctrl, "iface": iface,
@@ -177,19 +178,19 @@ def initDistro(ctrl):
 def initPlugins():
     # Import every plugin, and let they do whatever they want. Backends
     # are also considered plugins for that matter.
-    from smart.const import PLUGINSDIR
-    from smart import plugins
-    from smart import backends
+    from pacman.smart.const import PLUGINSDIR
+    from pacman.smart import plugins
+    from pacman.smart import backends
     pluginsdir = os.path.dirname(plugins.__file__)
     for entry in os.listdir(pluginsdir):
         if entry != "__init__.py" and entry.endswith(".py"):
-            __import__("smart.plugins."+entry[:-3])
+            __import__("pacman.smart.plugins."+entry[:-3])
         else:
             entrypath = os.path.join(pluginsdir, entry)
             if os.path.isdir(entrypath):
                 initpath = os.path.join(entrypath, "__init__.py")
                 if os.path.isfile(initpath):
-                    __import__("smart.plugins."+entry)
+                    __import__("pacman.smart.plugins."+entry)
     if os.path.isdir(PLUGINSDIR):
         for entry in os.listdir(PLUGINSDIR):
             entrypath = os.path.join(PLUGINSDIR, entry)
@@ -200,7 +201,7 @@ def initPlugins():
         if os.path.isdir(entrypath):
             initpath = os.path.join(entrypath, "__init__.py")
             if os.path.isfile(initpath):
-                __import__("smart.backends."+entry)
+                __import__("pacman.smart.backends."+entry)
 
 def initPsyco():
     if sysconf.get("psyco", True):

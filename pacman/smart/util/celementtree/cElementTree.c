@@ -2609,7 +2609,7 @@ initcElementTree(void)
         "except ImportError:\n"
         "  import ElementTree\n"
 */ 
-        "from smart.util.elementtree import ElementTree\n"
+        "from pacman.smart.util.elementtree import ElementTree\n"
 	
         "ET = ElementTree\n"
         "del ElementTree\n"

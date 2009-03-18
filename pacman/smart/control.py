@@ -25,20 +25,20 @@ import copy
 import time
 import md5
 
-from smart.transaction import ChangeSet, ChangeSetSplitter, INSTALL, REMOVE
-from smart.util.filetools import compareFiles, setCloseOnExecAll
-from smart.util.objdigest import getObjectDigest
-from smart.util.pathlocks import PathLocks
-from smart.util.strtools import strToBool
-from smart.searcher import Searcher
-from smart.media import MediaSet
-from smart.progress import Progress
-from smart.fetcher import Fetcher
-from smart.report import Report
-from smart.channel import *
-from smart.cache import *
-from smart.const import *
-from smart import *
+from pacman.smart.transaction import ChangeSet, ChangeSetSplitter, INSTALL, REMOVE
+from pacman.smart.util.filetools import compareFiles, setCloseOnExecAll
+from pacman.smart.util.objdigest import getObjectDigest
+from pacman.smart.util.pathlocks import PathLocks
+from pacman.smart.util.strtools import strToBool
+from pacman.smart.searcher import Searcher
+from pacman.smart.media import MediaSet
+from pacman.smart.progress import Progress
+from pacman.smart.fetcher import Fetcher
+from pacman.smart.report import Report
+from pacman.smart.channel import *
+from pacman.smart.cache import *
+from pacman.smart.const import *
+from pacman.smart import *
 
 
 if sys.version_info < (2, 4):

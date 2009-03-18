@@ -19,11 +19,11 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-from smart.interfaces.text.interface import TextInterface, getScreenWidth
-from smart.const import VERSION, NEVER
-from smart.option import OptionParser
-from smart.transaction import *
-from smart import *
+from pacman.smart.interfaces.text.interface import TextInterface, getScreenWidth
+from pacman.smart.const import VERSION, NEVER
+from pacman.smart.option import OptionParser
+from pacman.smart.transaction import *
+from pacman.smart import *
 from cmd import Cmd
 import sys, os
 import shlex
@@ -697,7 +697,7 @@ class Interpreter(Cmd):
 
     complete_flag = completeAll
     def do_flag(self, line):
-        from smart.commands import flag
+        from pacman.smart.commands import flag
         try:
             try:
                 opts = flag.parse_options(shlex.split(line))
@@ -716,7 +716,7 @@ class Interpreter(Cmd):
 
     complete_query = completeAll
     def do_query(self, line):
-        from smart.commands import query
+        from pacman.smart.commands import query
         try:
             try:
                 opts = query.parse_options(shlex.split(line))
@@ -733,7 +733,7 @@ class Interpreter(Cmd):
 
     complete_search = completeAll
     def do_search(self, line):
-        from smart.commands import search
+        from pacman.smart.commands import search
         try:
             try:
                 opts = search.parse_options(shlex.split(line))
@@ -750,7 +750,7 @@ class Interpreter(Cmd):
 
     complete_info = completeAll
     def do_info(self, line):
-        from smart.commands import info
+        from pacman.smart.commands import info
         try:
             try:
                 opts = info.parse_options(shlex.split(line))
@@ -766,7 +766,7 @@ class Interpreter(Cmd):
         print _("Usage: stats")
 
     def do_stats(self, line):
-        from smart.commands import stats
+        from pacman.smart.commands import stats
         try:
             try:
                 opts = stats.parse_options(shlex.split(line))
@@ -784,7 +784,7 @@ class Interpreter(Cmd):
         print _("Usage: check [options] [<pkgname>] ...")
 
     def do_check(self, line):
-        from smart.commands import check
+        from pacman.smart.commands import check
         try:
             try:
                 opts = check.parse_options(shlex.split(line))
