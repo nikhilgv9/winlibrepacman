@@ -506,7 +506,6 @@ class Control(object):
         return self.commitChangeSet(trans.getChangeSet(), caching, confirm)
 
     def commitChangeSet(self, changeset, caching=OPTIONAL, confirm=True):
-        print 'Calling controller.commitChangeSet with params', changeset, caching, confirm
         if confirm and not iface.confirmChangeSet(changeset):
             return False
 
@@ -565,12 +564,8 @@ class Control(object):
                             pmcs[pkg] = cs[pkg]
                     if sysconf.get("commit", True):
                         self.writeCommitLog(pmcs)
-                        print 'Calling %s.commit method with args' % pmclass,pmcs, pkgpaths
                         pmclass().commit(pmcs, pkgpaths)
-
                 if sysconf.get("remove-packages", True):
-                    print sysconf
-                    print "Sysconf ask to remove packages"
                     for pkg in pkgpaths:
                         for path in pkgpaths[pkg]:
                             if path.startswith(os.path.join(datadir,
@@ -659,7 +654,6 @@ class Control(object):
             info = loader.getInfo(pkg)
 
             urls = info.getURLs()
-            print 'URLs to download package', pkg, 'are', urls
             pkgitems[pkg] = []
             for url in urls:
                 media = self._achanset.getMedia(channel)

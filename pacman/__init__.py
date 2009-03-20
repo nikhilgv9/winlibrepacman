@@ -1,4 +1,4 @@
-import client
-import smart
+from pacman import client
+from pacman import smart
 
 

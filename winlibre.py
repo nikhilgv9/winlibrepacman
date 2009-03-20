@@ -164,10 +164,11 @@ def main(argv):
     exitcode = 1
     try:
         opts = parse_options(argv)
-        opts.data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'pacmandir'))
+        opts.data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'datadir'))
         opts.config_file = os.path.join(opts.data_dir, 'config')
         opts.interface = 'text'
         opts.ignore_locks=True
+        opts.option = ['remove-packages=False']
         ctrl = init(command=opts.command, argv=opts.argv,
                     datadir=opts.data_dir, configfile=opts.config_file,
                     gui=opts.gui, shell=opts.shell, interface=opts.interface,
@@ -181,13 +182,11 @@ def main(argv):
             baseurl = "http://127.0.0.1/winlibrepacman/packages.xml"
         path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'packages.xml'))
         #baseurl = 'file://%s' % path
-        print baseurl
         data = {'baseurl': baseurl,
                 'type':"pacman",
                 'name':'pacman'
                 }
         ctrl._channels['pacman'] = pacman_site.create('pacman', data)
-        
         if opts.option:
             set_config_options(opts.option)
         initDistro(ctrl)

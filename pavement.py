@@ -96,7 +96,11 @@ def dist_clean():
     path(".Python").remove()
     path(".coverage").remove()
     path("%s.egg-info" % options.setup.name).rmtree()
-    path("bin").rmtree()
+    import os
+    if os.name == 'nt':
+        path('Scripts').rmtree()
+    elif os.name == 'posix':
+        path("bin").rmtree()
     path("lib").rmtree()
     path("include").rmtree()
 

@@ -102,6 +102,7 @@ class SysConfig(object):
 
     def save(self, filepath):
         filepath = os.path.expanduser(filepath)
+        os.remove(filepath)
         if os.path.isfile(filepath):
             os.rename(filepath, filepath+".old")
         dirname = os.path.dirname(filepath)

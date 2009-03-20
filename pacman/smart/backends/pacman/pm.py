@@ -35,20 +35,20 @@ class PacManPackageManager(PackageManager):
 
 #            status, output = commands.getstatusoutput("installpkg %s" % 
 #                                                        pkgpaths[pkg][0])
-            status, output = 0, 'Package installed'
-            print pkg, output, status, pkg.installed
+            status, output = 0, 'installed'
+            print 'Package %s is %s. Installed: %s' % (pkg, output, pkg.installed)
 
         for pkg in upgrade:
 
 #            status, output = commands.getstatusoutput("upgradepkg %s" %
 #                                                      pkgpaths[pkg][0])
-            status, output = 0, 'Package upgraded'
-            print pkg, output, status
+            status, output = 0, 'upgraded'
+            print 'Package %s is %s. Installed: %s' % (pkg, output, pkg.installed)
 
         for pkg in remove:
 #            status, output = commands.getstatusoutput("removepkg %s" %
 #                                                      pkg.name)
-            status, output = 0, 'Package removed'
-            print pkg, output, status
+            status, output = 0, 'removed'
+            print 'Package %s is %s. Installed: %s' % (pkg, output, pkg.installed)
 
 # vim:ts=4:sw=4:et
