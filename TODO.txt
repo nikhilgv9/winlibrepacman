@@ -1,5 +1,10 @@
+Actually, we plan to use SMART package manager. It uses several "rules", to find backends, channels and interfaces.
+Maybe it will be easier to keep SMART complient with its original architecture and to have two libraries:
+	- SMART: Our package manager that will contain source code of our backends (macports and wpkg), channels and interfaces.
+	- WPKG: Tool used to install/remove/update applications onto Windows
+
 Global tasks:
- - Modify source code structure to be able to run unittest and doctest from nose module.
+ - 
 
 
 Repository Server tasks:

@@ -30,12 +30,12 @@ if sys.version_info < (2, 3):
     sys.exit("error: Python 2.3 or later required")
 
 
-from pacman.smart.channels import pacman_site
+from smart.channels import pacman_site
 
-from pacman.smart import init, initDistro, initPlugins, initPsyco
-from pacman.smart.const import VERSION, DATADIR
-from pacman.smart.option import OptionParser
-from pacman.smart import *
+from smart import init, initDistro, initPlugins, initPsyco
+from smart.const import VERSION, DATADIR
+from smart.option import OptionParser
+from smart import *
 #import pwd
 import os
 
