@@ -1,7 +1,8 @@
 import random
 import unittest
 
-from pacman import smart
+import smart
+import wpkg
 
 class TestSequenceFunctions(unittest.TestCase):
 

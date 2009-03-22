@@ -34,7 +34,7 @@ try:
     import pty
     import tty
     import termios
-#BCa    import fcntl
+    import fcntl
 except ImportError, e:
     raise ImportError, str(e) + """
 A critical module was not found. Probably this OS does not support it.
@@ -770,8 +770,7 @@ class spawn:
         """
 
         s = struct.pack('HHHH', 0, 0, 0, 0)
-#BCa        x = fcntl.ioctl(self.fileno(), termios.TIOCGWINSZ, s)
-        x = 12 #BCa
+        x = fcntl.ioctl(self.fileno(), termios.TIOCGWINSZ, s)
         return struct.unpack('HHHH', x)[0:2]
 
     def setwinsize(self, r, c):

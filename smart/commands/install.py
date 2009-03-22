@@ -176,8 +176,5 @@ def main(ctrl, opts):
             ctrl.commitTransactionStepped(trans, confirm=confirm)
         else:
             ctrl.commitTransaction(trans, confirm=confirm)
-            
-    for pkg in pkgs:
-        print pkg, pkg.installed
 
 # vim:ts=4:sw=4:et

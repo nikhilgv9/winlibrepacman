@@ -707,15 +707,15 @@ statichere PyTypeObject Package_Type = {
 	0,			/*tp_getattr*/
 	0,			/*tp_setattr*/
 	0,			/*tp_compare*/
-	PyObject_Str, /*tp_repr*/
+0	/*PyObject_Str*/, /*tp_repr*/
 	0,			/*tp_as_number*/
 	0,			/*tp_as_sequence*/
 	0,			/*tp_as_mapping*/
-	(hashfunc)_Py_HashPointer, /*tp_hash*/
+0	/*(hashfunc)_Py_HashPointer*/, /*tp_hash*/
     0,                      /*tp_call*/
     (reprfunc)Package_str,  /*tp_str*/
-    PyObject_GenericGetAttr,/*tp_getattro*/
-    PyObject_GenericSetAttr,/*tp_setattro*/
+0   /*PyObject_GenericGetAttr*/,/*tp_getattro*/
+0   /*PyObject_GenericSetAttr*/,/*tp_setattro*/
     0,                      /*tp_as_buffer*/
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
     0,                      /*tp_doc*/
@@ -734,9 +734,9 @@ statichere PyTypeObject Package_Type = {
     0,                      /*tp_descr_set*/
     0,                      /*tp_dictoffset*/
     (initproc)Package_init, /*tp_init*/
-    PyType_GenericAlloc,    /*tp_alloc*/
-    PyType_GenericNew,      /*tp_new*/
-    PyObject_GC_Del,        /*tp_free*/
+0   /*PyType_GenericAlloc*/,/*tp_alloc*/
+0   /*PyType_GenericNew*/,  /*tp_new*/
+0   /*PyObject_GC_Del*/,    /*tp_free*/
     0,                      /*tp_is_gc*/
 };
 
@@ -977,15 +977,15 @@ statichere PyTypeObject Provides_Type = {
 	0,			/*tp_getattr*/
 	0,			/*tp_setattr*/
 	(cmpfunc)Provides_compare, /*tp_compare*/
-	PyObject_Str, /*tp_repr*/
+0	/*PyObject_Str*/, /*tp_repr*/
 	0,			/*tp_as_number*/
 	0,			/*tp_as_sequence*/
 	0,			/*tp_as_mapping*/
-	(hashfunc)_Py_HashPointer, /*tp_hash*/
+0	/*(hashfunc)_Py_HashPointer*/, /*tp_hash*/
     0,                      /*tp_call*/
     (reprfunc)Provides_str, /*tp_str*/
-    PyObject_GenericGetAttr,/*tp_getattro*/
-    PyObject_GenericSetAttr,/*tp_setattro*/
+0   /*PyObject_GenericGetAttr*/,/*tp_getattro*/
+0   /*PyObject_GenericSetAttr*/,/*tp_setattro*/
     0,                      /*tp_as_buffer*/
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
     0,                      /*tp_doc*/
@@ -1004,9 +1004,9 @@ statichere PyTypeObject Provides_Type = {
     0,                      /*tp_descr_set*/
     0,                      /*tp_dictoffset*/
     (initproc)Provides_init, /*tp_init*/
-    PyType_GenericAlloc,    /*tp_alloc*/
-    PyType_GenericNew,      /*tp_new*/
-    PyObject_GC_Del,        /*tp_free*/
+0   /*PyType_GenericAlloc*/,    /*tp_alloc*/
+0   /*PyType_GenericNew*/,      /*tp_new*/
+0   /*PyObject_GC_Del*/,        /*tp_free*/
     0,                      /*tp_is_gc*/
 };
 
@@ -1180,15 +1180,15 @@ statichere PyTypeObject Depends_Type = {
 	0,			/*tp_getattr*/
 	0,			/*tp_setattr*/
 	(cmpfunc)Depends_compare, /*tp_compare*/
-	PyObject_Str, /*tp_repr*/
+0	/*PyObject_Str*/, /*tp_repr*/
 	0,			/*tp_as_number*/
 	0,			/*tp_as_sequence*/
 	0,			/*tp_as_mapping*/
-	(hashfunc)_Py_HashPointer, /*tp_hash*/
+0	/*(hashfunc)_Py_HashPointer*/, /*tp_hash*/
     0,                      /*tp_call*/
     (reprfunc)Depends_str, /*tp_str*/
-    PyObject_GenericGetAttr,/*tp_getattro*/
-    PyObject_GenericSetAttr,/*tp_setattro*/
+0   /*PyObject_GenericGetAttr*/,/*tp_getattro*/
+0   /*PyObject_GenericSetAttr*/,/*tp_setattro*/
     0,                      /*tp_as_buffer*/
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
     0,                      /*tp_doc*/
@@ -1207,9 +1207,9 @@ statichere PyTypeObject Depends_Type = {
     0,                      /*tp_descr_set*/
     0,                      /*tp_dictoffset*/
     (initproc)Depends_init, /*tp_init*/
-    PyType_GenericAlloc,    /*tp_alloc*/
-    PyType_GenericNew,      /*tp_new*/
-    PyObject_GC_Del,        /*tp_free*/
+0   /*PyType_GenericAlloc*/,/*tp_alloc*/
+0   /*PyType_GenericNew*/,  /*tp_new*/
+0   /*PyObject_GC_Del*/,    /*tp_free*/
     0,                      /*tp_is_gc*/
 };
 
@@ -1976,14 +1976,14 @@ Loader_buildFileProvides(LoaderObject *self, PyObject *args)
             /* pkg.requires.remove(req) */
             PyList_SetSlice(pkgobj->requires, i, i+1, NULL);
             /* req.packages.remove(pkg) */
-            for (j = PyList_GET_SIZE(reqobj->packages); j != -1; j--) {
+            for (j = PyList_GET_SIZE(reqobj->packages)-1; j != -1; j--) {
                 if (PyList_GET_ITEM(reqobj->packages, j) == pkg)
                     PyList_SetSlice(reqobj->packages, j, j+1, NULL);
             }
             /* if not req.packages: */
             if (PyList_GET_SIZE(reqobj->packages) == 0) {
                 /* cache._requires.remove(req) */
-                for (j = PyList_GET_SIZE(cache->_requires); j != -1; j--) {
+                for (j = PyList_GET_SIZE(cache->_requires)-1; j != -1; j--) {
                     if (PyList_GET_ITEM(cache->_requires, j) == req)
                         PyList_SetSlice(cache->_requires, j, j+1, NULL);
                 }
@@ -2353,11 +2353,11 @@ statichere PyTypeObject Loader_Type = {
 	0,			/*tp_as_number*/
 	0,			/*tp_as_sequence*/
 	0,			/*tp_as_mapping*/
-	(hashfunc)_Py_HashPointer, /*tp_hash*/
+0	/*(hashfunc)_Py_HashPointer*/, /*tp_hash*/
     0,                      /*tp_call*/
     0,                      /*tp_str*/
-    PyObject_GenericGetAttr,/*tp_getattro*/
-    PyObject_GenericSetAttr,/*tp_setattro*/
+0   /*PyObject_GenericGetAttr*/,/*tp_getattro*/
+0   /*PyObject_GenericSetAttr*/,/*tp_setattro*/
     0,                      /*tp_as_buffer*/
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
     0,                      /*tp_doc*/
@@ -2376,9 +2376,9 @@ statichere PyTypeObject Loader_Type = {
     0,                      /*tp_descr_set*/
     0,                      /*tp_dictoffset*/
     (initproc)Loader_init,  /*tp_init*/
-    PyType_GenericAlloc,    /*tp_alloc*/
-    PyType_GenericNew,      /*tp_new*/
-    PyObject_GC_Del,          /*tp_free*/
+0   /*PyType_GenericAlloc*/,/*tp_alloc*/
+0   /*PyType_GenericNew*/,  /*tp_new*/
+0   /*PyObject_GC_Del*/,    /*tp_free*/
     0,                      /*tp_is_gc*/
 };
 
@@ -3598,11 +3598,11 @@ statichere PyTypeObject Cache_Type = {
 	0,			/*tp_as_number*/
 	0,			/*tp_as_sequence*/
 	0,			/*tp_as_mapping*/
-	(hashfunc)_Py_HashPointer, /*tp_hash*/
+0	/*(hashfunc)_Py_HashPointer*/, /*tp_hash*/
     0,                      /*tp_call*/
     0,                      /*tp_str*/
-    PyObject_GenericGetAttr,/*tp_getattro*/
-    PyObject_GenericSetAttr,/*tp_setattro*/
+0   /*PyObject_GenericGetAttr*/,/*tp_getattro*/
+0   /*PyObject_GenericSetAttr*/,/*tp_setattro*/
     0,                      /*tp_as_buffer*/
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
     0,                      /*tp_doc*/
@@ -3621,9 +3621,9 @@ statichere PyTypeObject Cache_Type = {
     0,                      /*tp_descr_set*/
     0,                      /*tp_dictoffset*/
     (initproc)Cache_init,  /*tp_init*/
-    PyType_GenericAlloc,    /*tp_alloc*/
-    PyType_GenericNew,      /*tp_new*/
-    PyObject_GC_Del,          /*tp_free*/
+0   /*PyType_GenericAlloc*/,/*tp_alloc*/
+0   /*PyType_GenericNew*/,  /*tp_new*/
+0   /*PyObject_GC_Del*/,    /*tp_free*/
     0,                      /*tp_is_gc*/
 };
 
@@ -3641,6 +3641,44 @@ initccache(void)
     Depends_Type.ob_type = &PyType_Type;
     Loader_Type.ob_type = &PyType_Type;
     Cache_Type.ob_type = &PyType_Type;
+
+    Package_Type.tp_repr = PyObject_Str;
+    Package_Type.tp_hash = (hashfunc)_Py_HashPointer;
+    Package_Type.tp_getattro = PyObject_GenericGetAttr;
+    Package_Type.tp_setattro = PyObject_GenericSetAttr;
+    Package_Type.tp_alloc = PyType_GenericAlloc;
+    Package_Type.tp_new = PyType_GenericNew;
+    Package_Type.tp_free = PyObject_GC_Del;
+    
+    Provides_Type.tp_repr = PyObject_Str;
+    Provides_Type.tp_hash = (hashfunc)_Py_HashPointer;
+    Provides_Type.tp_getattro = PyObject_GenericGetAttr;
+    Provides_Type.tp_setattro = PyObject_GenericSetAttr;
+    Provides_Type.tp_alloc = PyType_GenericAlloc;
+    Provides_Type.tp_new = PyType_GenericNew;
+    Provides_Type.tp_free = PyObject_GC_Del;
+
+    Depends_Type.tp_repr = PyObject_Str;
+    Depends_Type.tp_hash = (hashfunc)_Py_HashPointer;
+    Depends_Type.tp_getattro = PyObject_GenericGetAttr;
+    Depends_Type.tp_setattro = PyObject_GenericSetAttr;
+    Depends_Type.tp_alloc = PyType_GenericAlloc;
+    Depends_Type.tp_new = PyType_GenericNew;
+    Depends_Type.tp_free = PyObject_GC_Del;
+
+    Loader_Type.tp_hash = (hashfunc)_Py_HashPointer;
+    Loader_Type.tp_getattro = PyObject_GenericGetAttr;
+    Loader_Type.tp_setattro = PyObject_GenericSetAttr;
+    Loader_Type.tp_alloc = PyType_GenericAlloc;
+    Loader_Type.tp_new = PyType_GenericNew;
+    Loader_Type.tp_free = PyObject_GC_Del;
+
+    Cache_Type.tp_hash = (hashfunc)_Py_HashPointer;
+    Cache_Type.tp_getattro = PyObject_GenericGetAttr;
+    Cache_Type.tp_setattro = PyObject_GenericSetAttr;
+    Cache_Type.tp_alloc = PyType_GenericAlloc;
+    Cache_Type.tp_new = PyType_GenericNew;
+    Cache_Type.tp_free = PyObject_GC_Del;
 
     PyType_Ready(&Loader_Type);
     o = PyInt_FromLong(Loader__stateversion__);

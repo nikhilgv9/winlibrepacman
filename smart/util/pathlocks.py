@@ -19,51 +19,15 @@
 # along with Smart Package Manager; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-import os
-import subprocess
-
-if subprocess.mswindows:
-    import msvcrt
-    
-    def funlock(fd):
-        # On Windows system, we only need to close the file
-        # to unlock it.
-        pass
-        
-    def flock(fd, blocking=False, exclusive=False):
-        pass
-#        if blocking:
-#            flags = msvcrt.LK_NBLCK
-#        else:
-#            flags = msvcrt.LK_LOCK
-#        msvcrt.locking(fd.fileno(), flags, os.path.getsize(fd.name))
-        
-    def fopen(path, flags=os.O_RDONLY):
-#        if os.path.isdir(path):
-#            return open(os.path.join(path, 'lock'), 'w')
-        return os.open(path, flags)
-        
-else:
+try:
     import fcntl
-    
-    def funlock(fd):
-        fcntl.flock(fd, fcntl.F_UNLCK)
-        
-    def flock(fd, blocking=False, exclusive=False):
-        if exclusive:
-            flags = fcntl.LOCK_EX
-        else:
-            flags = fcntl.LOCK_SH
-        if not blocking:
-            flags |= fcntl.LOCK_NB
-        fcntl.flock(fd, flags)
-        
-    def fopen(path, flags=os.O_RDONLY):
-        fd = os.open(path, flags)
-        flags = fcntl.fcntl(fd, fcntl.F_GETFD, 0)
-        flags |= fcntl.FD_CLOEXEC
-        fcntl.fcntl(fd, fcntl.F_SETFD, flags)
-        return fd
+except ImportError:
+    fcntl = None
+    try:
+        import msvcrt
+    except ImportError:
+        msvcrt = None
+import os
 
 class PathLocks(object):
     
@@ -79,39 +43,68 @@ class PathLocks(object):
 
     def __del__(self):
         # fcntl module may be destructed before we are.
-        try:
-            self.unlockAll()
-        except TypeError, e:
-            pass
+        if fcntl: self.unlockAll()
 
     def unlockAll(self):
-        # for path in self._lock:
-        #     fd = self._lock[path]
-        #     funlock(fd)
-        #     os.close(fd)
-        # self._lock.clear()
-        pass
+        for path in self._lock:
+            fd = self._lock[path]
+            fcntl.flock(fd, fcntl.LOCK_UN)
+            os.close(fd)
+        self._lock.clear()
 
     def unlock(self, path):
         result = self._force
-        # fd = self._lock.get(path)
-        # if fd is not None:
-        #     funlock(fd)
-        #     os.close(fd)
-        #     del self._lock[path]
-        #     result = True
+        fd = self._lock.get(path)
+        if fd is not None:
+            if fcntl: fcntl.flock(fd, fcntl.LOCK_UN)
+            os.close(fd)
+            del self._lock[path]
+            result = True
+        elif msvcrt:
+            result = True
         return result
-        
-    
+
     def lock(self, path, exclusive=False, block=False):
         result = self._force
-        # fd = self._lock.get(path)
-        # if fd is None:
-        #     fd = self._lock[path] = fopen(path, os.O_RDONLY)
-        # try:
-        #     flock(fd, block, exclusive)
-        #     result = True
-        # except IOError, e:
-        #     pass
+        fd = self._lock.get(path)
+        if fd is None:
+            if fcntl:
+                fd = self._lock[path] = os.open(path, os.O_RDONLY)
+                flags = fcntl.fcntl(fd, fcntl.F_GETFD, 0)
+                flags |= fcntl.FD_CLOEXEC
+                fcntl.fcntl(fd, fcntl.F_SETFD, flags)
+            elif msvcrt:
+                if os.path.isdir(path):
+                    self._lock[path] = None
+                    return True
+                fd = self._lock[path] = os.open(path, os.O_RDONLY)
+        if fcntl:
+            if exclusive:
+                flags = fcntl.LOCK_EX
+            else:
+                flags = fcntl.LOCK_SH
+            if not block:
+                flags |= fcntl.LOCK_NB
+            try:
+                fcntl.flock(fd, flags)
+                result = True
+            except IOError, e:
+                pass
+        elif msvcrt:
+            if exclusive:
+                if not block:
+                    mode = msvcrt.LK_NBRLCK
+                else:
+                    mode = msvcrt.LK_RLCK
+            else:
+                if not block:
+                    mode = msvcrt.LK_NBLCK
+                else:
+                    mode = msvcrt.LK_LOCK
+            try:
+                # lock from current position (0) to end of file
+                msvcrt.locking(fd.fileno(), mode, os.path.getsize(path))
+                pass
+            except IOError, e:
+                pass
         return result
-        

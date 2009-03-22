@@ -20,6 +20,7 @@ Prepare Development Environment
 First you will need to generate the virtual environnement which will contain all the python libraries 
 we need for our development.
 To do this, launch the following command from the project directory:
+
   python bootstrap.py
 
 In our application, we download some file from the repository server. Actually this repository server 
@@ -27,6 +28,9 @@ does not exist on the Web. At this time our "repository" is a local HTTP server.
 specify the address of your local HTTP server in winlibre.py file.
 
 You can use EasyPHP to manage a HTTP server very easily on Windows.
+
+You also need to install `python for windows extensions <http://starship.python.net/crew/mhammond/win32/>`_ 
+library which is used in the SMART port on windows platform.
 
 Structure of the project
 ========================
@@ -38,26 +42,25 @@ Here is the structure of the source code when you download it:
 +=============+====================+============================================================+
 |   file      | bootstrap.py       | Script that generates the virtual environnement used for   |
 |             |                    | our development.                                           |
++-------------+--------------------+------------------------------------------------------------+
 |   file      | winlibre.py        | Application launcher.                                      |
-|             |                    |                                                            |
 +-------------+--------------------+------------------------------------------------------------+
 |  directory  | docs/              | *source* directory contains all the documents that will be |
 |             |   docs/source      | used to generate the documentation.                        |
 |             |                    |                                                            |
 |             |   docs/build       | *build* directory contains the generated documentation     |
 +-------------+--------------------+------------------------------------------------------------+
-|  directory  | pacman/            | *smart* directory contains the source code of the SMART    |
-|             |   pacman/smart     | library.                                                   |
-|             |                    |                                                            |
-|             |                    | *client* directory contains the source code of the client  |
-|             |   pacman/client    | application.                                               |
-|             |                    |                                                            |
-|             |                    | *server* directory contains the source code of the         |
-|             |   pacman/server    | repository server.                                         |
+|  directory  | smart/             | Contains the source code of the SMART library.             |
+|             |                    | Source code of our GUI, backends and channels will be      |
+|             |                    | added to smart/interfaces, smart/backends, smart/channels  |
+|             |                    | directories                                                |
 +-------------+--------------------+------------------------------------------------------------+
-|  directory  | pacmandir/         | *pacmandir* directory is the working directory of the      |
+|             |                    | Contains the modules used to manage Windows packages (MSI, |
+|  directory  |   wpkg             | NSIS ...)                                                  |
++-------------+--------------------+------------------------------------------------------------+
+|  directory  | datadir/           | *pacmandir* directory is the working directory of the      |
 |             |                    | SMART library. Cached data will be stored here.            |
-|             |   pacmandir/config |                                                            |
+|             |   datadir/config   |                                                            |
 +-------------+--------------------+------------------------------------------------------------+
 |   file      | pavement.py        | Paver configuration file.                                  |
 +-------------+--------------------+------------------------------------------------------------+
@@ -80,7 +83,7 @@ You can perform several actions:
   * Finding and performing unittests:
     ./bin/paver test
 
-  * Cleaning *.pyc and temporary files:
+  * Cleaning .pyc and temporary files:
     ./bin/paver clean
 
   * Cleaning generating documentation:
@@ -95,8 +98,7 @@ SMART
 Our development is axis around SMART library. We use it to get the list of available packages, 
 to download them, and to handle cached files. 
 
-The *pacman/smart* directory contains the SMART source code that we have modified to make it run onto 
-windows platform. 
+The *smart* directory contains the `Windows branch <https://code.launchpad.net/~afb/smart/windows>`_ of the SMART library
 
 Every basic commands are handle from the *commands* which call the *controller* module (from control.py) to 
 perform them. 

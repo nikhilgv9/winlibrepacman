@@ -23,7 +23,6 @@ import cPickle
 import sys, os
 import copy
 import time
-import md5
 
 from smart.transaction import ChangeSet, ChangeSetSplitter, INSTALL, REMOVE
 from smart.util.filetools import compareFiles, setCloseOnExecAll
@@ -178,7 +177,10 @@ class Control(object):
                              self._channels,
                              self._sysconfchannels)
                     cPickle.dump(state, cachefile, 2)
-                    cachefile.close()
+                    if os.name == 'nt':
+                        os.close(cachefile.fileno())
+                    else: # 'posix'
+                        cachefile.close()
                     os.rename(cachepath+".new", cachepath)
                     iface.hideStatus()
                 elif os.path.isfile(cachepath):
@@ -234,6 +236,10 @@ class Control(object):
                         import traceback
                         traceback.print_exc()
                     if os.access(os.path.dirname(cachepath), os.W_OK):
+                        if os.name == 'nt':
+                            os.close(cachefile.fileno())
+                        else: # 'posix'
+                            cachefile.close()
                         os.unlink(cachepath)
                 else:
                     (__stateversion__,
@@ -244,7 +250,7 @@ class Control(object):
                         if (alias not in channels or
                             not isEnabled(alias, channels[alias])):
                             self.removeChannel(alias)
-                cachefile.close()
+                    cachefile.close()
                 iface.hideStatus()
 
         for alias in channels:
@@ -565,6 +571,7 @@ class Control(object):
                     if sysconf.get("commit", True):
                         self.writeCommitLog(pmcs)
                         pmclass().commit(pmcs, pkgpaths)
+
                 if sysconf.get("remove-packages", True):
                     for pkg in pkgpaths:
                         for path in pkgpaths[pkg]:
@@ -652,7 +659,6 @@ class Control(object):
             else:
                 raise Error, _("No channel available for package %s") % pkg
             info = loader.getInfo(pkg)
-
             urls = info.getURLs()
             pkgitems[pkg] = []
             for url in urls:

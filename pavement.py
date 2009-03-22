@@ -12,7 +12,7 @@ options(
 	    author='Bertrand Cachet',
 	    author_email='bertrand.cachet@gmail.com',
 	    url='http://code.google.com/p/winlibre',
-	    packages=['pacman'],
+	    packages=['wpkg', 'smart'],
 	    install_requires=[],
 	    test_suite='tests.suite',
 	    zip_safe=False,

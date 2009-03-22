@@ -523,8 +523,10 @@ PENDING_INSTALL  = 2
 PENDING_UPDOWN   = 3
 
 # float to make min() "%f" work, but larger than any real weight.
-#BCa MAX_WEIGHT = float("inf")
-MAX_WEIGHT = 100000000000000000
+try:
+    MAX_WEIGHT = float("inf")
+except ValueError:
+    MAX_WEIGHT = 9999999999.0
 
 
 class Task(object):

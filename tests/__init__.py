@@ -17,7 +17,7 @@ def search_test_files(path):
     test_files = []
     search_files_recursively(path, rule.search, test_files)
     return test_files
-    
+
 def suite():
     import unittest    
     def my_import(name):
@@ -34,8 +34,8 @@ def suite():
         return mod
         
     def convert_filename_to_modulname(filename):
-        local_path = os.path.dirname(__file__)
-        return filename.replace(os.sep, '.').replace('.py', '')
+        local_path = '/'.join(os.path.dirname(__file__).split('/')[:-1])
+        return filename.replace(local_path, '').replace(os.sep, '.').replace('.py', '')[1:]
 
     path = os.path.dirname(__file__)
     test_files = search_test_files(path)

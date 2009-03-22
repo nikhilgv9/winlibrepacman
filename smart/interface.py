@@ -24,9 +24,7 @@ from smart.progress import Progress
 from smart.const import *
 from smart import *
 import sys, os
-#BCa import termios
 import struct
-#BCa import fcntl
 
 class Interface(object):
 
@@ -145,11 +143,17 @@ class Interface(object):
 def getScreenWidth():
     s = struct.pack('HHHH', 0, 0, 0, 0)
     try:
-#BCa        x = fcntl.ioctl(1, termios.TIOCGWINSZ, s)
-        return 80 #BCa
-    except IOError:
-        return 80
-    return struct.unpack('HHHH', x)[1]
+        import termios
+        import fcntl
+        x = fcntl.ioctl(1, termios.TIOCGWINSZ, s)
+    except ImportError, IOError:
+        width = 80
+    else:
+        width = struct.unpack('HHHH', x)[1]
+        if width == 0:
+            width = 80
+    return width
+
 
 def createInterface(name, ctrl, command=None, argv=None):
     try:

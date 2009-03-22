@@ -91,5 +91,7 @@ def globdistance(a, b, cutoff=None, ignorecase=False):
     if cutoff is not None and res > cutoff:
         return bl, 0.0
     return res, float(maxl-res)/maxl
-
-#BCa from cdistance import *
+try:
+    from cdistance import *
+except ImportError:
+    pass

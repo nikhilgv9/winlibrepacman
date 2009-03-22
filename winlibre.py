@@ -180,7 +180,7 @@ def main(argv):
             baseurl = "http://127.0.0.1/~bertrand/packages.xml"
         if os.name == 'nt':
             baseurl = "http://127.0.0.1/winlibrepacman/packages.xml"
-        path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'packages.xml'))
+        #path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'packages.xml'))
         #baseurl = 'file://%s' % path
         data = {'baseurl': baseurl,
                 'type':"pacman",

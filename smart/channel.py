@@ -161,12 +161,11 @@ def createChannel(alias, data):
         smart = __import__("smart.channels."+type)
         channels = getattr(smart, "channels")
         channel = getattr(channels, type)
-    except (ImportError, AttributeError), e:
+    except (ImportError, AttributeError):
         from smart.const import DEBUG
         if sysconf.get("log-level") == DEBUG:
             import traceback
             traceback.print_exc()
-        print e
         raise Error, _("Unable to create channel of type '%s'") % type
     data = data.copy()
     info = getChannelInfo(data.get("type"))

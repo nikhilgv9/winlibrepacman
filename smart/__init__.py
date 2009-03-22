@@ -26,7 +26,6 @@ import locale
 import sys
 import os
 
-
 from smart.hook import Hooks
 
 
@@ -111,7 +110,7 @@ def init(command=None, argv=None,
     sysconf.object = SysConfig()
     pkgconf.object = PkgConfig(sysconf.object)
     sysconf.set("log-level", INFO, weak=True)
-    sysconf.set("data-dir", DATADIR, weak=True)
+    sysconf.set("data-dir", DATADIR.replace("/", os.sep), weak=True)
     if loglevel:
         level = {"error": ERROR, "warning": WARNING,
                  "debug": DEBUG, "info": INFO}.get(loglevel)
@@ -146,9 +145,9 @@ def init(command=None, argv=None,
     #   >>>
     #
     try:
-#BCa        import signal
-#BCa        signal.signal(signal.SIGPIPE, signal.SIG_DFL)
-        pass #BCa
+        import signal
+        if hasattr(signal, 'SIGPIPE'):
+            signal.signal(signal.SIGPIPE, signal.SIG_DFL)
     except ValueError:
         if signal.getsignal(signal.SIGPIPE) != signal.SIG_DFL:
             iface.warning("SIGPIPE isn't SIG_DFL. Scriptlets may fail.")

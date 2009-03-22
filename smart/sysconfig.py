@@ -49,13 +49,6 @@ class SysConfig(object):
         self._modified = False
         self._config = self
 
-    def __getstate__(self):
-        return self._hardmap
-
-    def __setstate__(self, state):
-        self._hardmap.clear()
-        self._hardmap.update(state)
-
     def getReadOnly(self):
         return self._readonly
 
@@ -102,8 +95,9 @@ class SysConfig(object):
 
     def save(self, filepath):
         filepath = os.path.expanduser(filepath)
-        os.remove(filepath)
         if os.path.isfile(filepath):
+            if os.path.exists(filepath+".old"):
+                os.unlink(filepath+".old")
             os.rename(filepath, filepath+".old")
         dirname = os.path.dirname(filepath)
         if not os.path.isdir(dirname):

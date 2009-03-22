@@ -39,7 +39,8 @@ class TextProgress(Progress):
         self._seentopics = {}
         self._addline = False
         self.setScreenWidth(getScreenWidth())
-#BCa     signal.signal(signal.SIGWINCH, self.handleScreenWidth)
+        if hasattr(signal, 'SIGWINCH'):
+            signal.signal(signal.SIGWINCH, self.handleScreenWidth)
 
     def setScreenWidth(self, width):
         self._screenwidth = width
