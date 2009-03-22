@@ -67,7 +67,7 @@ def clean():
 	cleaner = Cleaner('./smart/', ['pyc', '~'])
 	if cleaner.is_permitted('delete'):
 		cleaner.execute('file/folder removal')
-	cleaner = Cleaner('./pacman/', ['pyc', '~'])
+	cleaner = Cleaner('./wpkg/', ['pyc', '~'])
 	if cleaner.is_permitted('delete'):
 		cleaner.execute('file/folder removal')
 

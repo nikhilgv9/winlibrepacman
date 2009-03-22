@@ -76,9 +76,13 @@ def setCloseOnExecAll():
         try:
             if os.name == 'nt':
                 import win32api, win32con
+                import pywintypes
                 flags = 0
                 flags |= win32con.HANDLE_FLAG_INHERIT
-                win32api.SetHandleInformation(fd, win32con.HANDLE_FLAG_INHERIT, flags)
+                try:
+                    win32api.SetHandleInformation(fd, win32con.HANDLE_FLAG_INHERIT, flags)
+                except pywintypes.error:
+                    pass
             else: # 'posix'
                 import fcntl
                 flags = fcntl.fcntl(fd, fcntl.F_GETFL, 0)
