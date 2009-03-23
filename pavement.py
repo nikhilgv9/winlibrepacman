@@ -1,21 +1,28 @@
-from paver.defaults import *
+from paver.easy import *
+from paver.setuputils import setup
 
 import paver.doctools
-import paver.virtual
-import paver.setuputils
+
+paver.setuputils.install_distutils_tasks()
 
 options(
-    setup=Bunch(
-	    name='PackageManager',
-	    version="0.0.1",
-	    description='Package Manager',
-	    author='Bertrand Cachet',
-	    author_email='bertrand.cachet@gmail.com',
-	    url='http://code.google.com/p/winlibre',
-	    packages=['wpkg', 'smart'],
-	    install_requires=[],
-	    test_suite='tests.suite',
-	    zip_safe=False,
+    setup=dict(
+    name='winlibrepacman',
+    version="0.0.1",
+    description='Windows Package Manager',
+    author='Bertrand Cachet',
+    author_email='bertrand.cachet@gmail.com',
+    url='http://github.com/bcachet/winlibrepacman/tree/master',
+    packages=['smart', 'wpkg'],
+    package_data=paver.setuputils.find_package_data("smart", package="smart",
+                                             only_in_packages=False),
+    install_requires=[],
+    test_suite='tests.suite',
+    zip_safe=False,
+    entry_points="""
+    [console_scripts]
+    paver = paver.command:main
+    """,
     ),
 
     sphinx=Bunch(
@@ -23,43 +30,12 @@ options(
         sourcedir="source"
     ),
 
-	virtualenv=Bunch(
-		packages_to_install=['virtualenv', 'elementtree', 'elements', 'sphinx', 'nose', 'pylint', 'django'],
-		install_paver=False,
-		script_name='bootstrap.py',
-		paver_command_line=None
-    ),
-
+    virtualenv=Bunch(
+    	packages_to_install=['virtualenv', 'elementtree', 'elements', 'sphinx', 'nose', 'pylint', 'django'],
+    	script_name='bootstrap.py',
+    	paver_command_line=None
+    )
 )
-
-# @task
-# def test():
-#     import sys
-#     sys.path.append(os.path.abspath(os.path.dirname('./')))
-#     print sys.path
-#     from subprocess import call
-#     command = ['./bin/nosetests', '-P', '--with-doctest', '-e', 'interfaces' ,'-w', 'tests']
-#     #for package in options.packages:
-#     # command.append(package)
-#     call(command)
-
-if paver.virtual.has_virtualenv:
-    @task
-    def bootstrap():
-        """Build a virtualenv bootstrap for developing paver."""
-        paver.virtual._create_bootstrap(options.script_name,
-										options.packages_to_install,
-										options.paver_command_line,
-#										options.install_paver
-										)
-
-import os
-def rm_files(arg, dirname, names):
-    for filename in names:
-        filename = os.path.join(dirname,filename)
-        if os.path.isfile(filename):
-            if os.path.splitext(filename)[1] in arg:
-                os.remove(filename)
 
 @task
 def clean():
@@ -71,31 +47,13 @@ def clean():
 	if cleaner.is_permitted('delete'):
 		cleaner.execute('file/folder removal')
 
-#    import os
-#    for package in options.setup.packages:
-#        dir = package.replace('.', os.path.sep)
-#        os.path.walk(dir, rm_files, ['.pyc'])
-#        os.path.walk(dir, rm_files, ['.py~'])
-#    os.path.walk('tests', rm_files, ['.pyc'])
-#    os.path.walk('tests', rm_files, ['.py~'])
-
-@task
-def doc_clean():
-    """Cleans up generated documentation. Remove the docs/build directory."""
-    docdir = path("docs") / "build"
-    docdir.rmtree()
-    docdir = path("docs") / ".build"
-    docdir.rmtree()
-    docdir = path(options.setup.name) / "docs"
-    docdir.rmtree()
-
 @task
 @needs(["clean", "doc_clean"])
 def dist_clean():
     """Cleans up this paver directory. Removes the virtualenv traces, build directory and generated docs"""
     path(".Python").remove()
     path(".coverage").remove()
-    path("%s.egg-info" % options.setup.name).rmtree()
+    path("%s.egg-info" % options.setup['name']).rmtree()
     import os
     if os.name == 'nt':
         path('Scripts').rmtree()
@@ -191,3 +149,13 @@ class Cleaner(object):
             visit(root, dirs, ' +-->')
             visit(root, files,' |-->')
         return results
+
+@task
+@needs('paver.virtual.bootstrap')
+def bootstrap():
+    """Build a virtualenv bootstrap for developing paver."""
+    paver.virtual.bootstrap(options.script_name,
+							options.packages_to_install,
+							options.paver_command_line,
+							)
+									
